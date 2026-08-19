@@ -1,0 +1,64 @@
+.portfolio {
+  position: relative;
+  overflow: hidden;
+}
+
+.orb {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-primary);
+  bottom: -100px;
+  left: -150px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skeleton {
+  aspect-ratio: 4/5;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.3; }
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.empty p {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 968px) {
+  .grid,
+  .loadingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid,
+  .loadingGrid {
+    grid-template-columns: 1fr;
+  }
+}

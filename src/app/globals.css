@@ -1,0 +1,463 @@
+@import "tailwindcss";
+
+/* ============================================
+   PINA Subholding — Design System
+   Dual Theme: Glassblack (Dark) & Glasswhite (Light)
+   ============================================ */
+
+:root {
+  /* Typography */
+  --font-primary: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+  --transition-theme: 0.4s ease-in-out;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --section-padding: 100px 0;
+  --container-max: 1200px;
+  --container-padding: 0 24px;
+
+  /* Z-index layers */
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+}
+
+/* ============================================
+   DARK THEME (Solarized Dark) — Default
+   ============================================ */
+[data-theme="dark"] {
+  --bg-primary: #002b36;
+  --bg-secondary: #073642;
+  --bg-tertiary: #0a3540;
+  --bg-card: rgba(7, 54, 66, 0.45);
+  --bg-card-hover: rgba(7, 54, 66, 0.7);
+  --bg-glass: rgba(0, 43, 54, 0.5);
+  --bg-glass-strong: rgba(7, 54, 66, 0.8);
+  --bg-glass-hover: rgba(7, 54, 66, 0.9);
+  --bg-nav: rgba(0, 43, 54, 0.85);
+
+  --text-primary: #93a1a1;
+  --text-secondary: #839496;
+  --text-tertiary: #657b83;
+  --text-muted: #586e75;
+
+  --border-color: rgba(147, 161, 161, 0.15);
+  --border-hover: rgba(147, 161, 161, 0.3);
+  --border-focus: #268bd2;
+
+  --accent-primary: #268bd2;
+  --accent-secondary: #2aa198;
+  --accent-tertiary: #6c71c4;
+  --accent-gradient: #268bd2;
+  --accent-gradient-hover: #2aa198;
+  --accent-glow: 0 0 20px rgba(38, 139, 210, 0.3);
+  --accent-glow-strong: 0 0 40px rgba(38, 139, 210, 0.5);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.6);
+
+  --glass-blur: 12px;
+  --glass-blur-strong: 24px;
+
+  --success: #859900;
+  --error: #dc322f;
+  --warning: #b58900;
+  --info: #2aa198;
+
+  --robot-light: #2aa198;
+  --robot-body: #073642;
+  --robot-accent: #6c71c4;
+}
+
+
+/* ============================================
+   Base Styles
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  transition: color var(--transition-theme);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; }
+h4 { font-size: 1.25rem; font-weight: 600; }
+
+p {
+  color: var(--text-secondary);
+  transition: color var(--transition-theme);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* ============================================
+   Glass Utilities
+   ============================================ */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.glass-strong {
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.glass:hover, .glass-strong:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-hover);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--accent-glow);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: var(--accent-glow);
+}
+
+.btn-primary:hover {
+  background: var(--accent-gradient-hover);
+  box-shadow: var(--accent-glow-strong);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.btn-glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-glass:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow);
+  transform: translateY(-2px);
+  color: var(--accent-primary);
+}
+
+/* ============================================
+   Form Inputs
+   ============================================ */
+.input-glass {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.input-glass::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input-glass:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 192, 255, 0.1);
+  background: var(--bg-glass-strong);
+}
+
+textarea.input-glass {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================
+   Section Styles
+   ============================================ */
+.section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  margin-bottom: 16px;
+  color: var(--accent-primary);
+}
+
+.section-title p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* ============================================
+   Scroll Animations
+   ============================================ */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate.slide-left {
+  transform: translateX(-60px);
+}
+
+.scroll-animate.slide-left.animate-in {
+  transform: translateX(0);
+}
+
+.scroll-animate.slide-right {
+  transform: translateX(60px);
+}
+
+.scroll-animate.slide-right.animate-in {
+  transform: translateX(0);
+}
+
+.scroll-animate.scale-in {
+  transform: scale(0.9);
+}
+
+.scroll-animate.scale-in.animate-in {
+  transform: scale(1);
+}
+
+/* Staggered animations */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-animate {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--accent-glow); }
+  50% { box-shadow: var(--accent-glow-strong); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ============================================
+   Responsive Utilities
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 0;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 40px 0;
+    --container-padding: 0 16px;
+  }
+}
+
+/* ============================================
+   Background decorative elements
+   ============================================ */
+.bg-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity var(--transition-theme);
+}
+

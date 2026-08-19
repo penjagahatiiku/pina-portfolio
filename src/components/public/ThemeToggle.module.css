@@ -1,0 +1,50 @@
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 60px;
+  height: 32px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  padding: 2px;
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.toggle:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow);
+}
+
+.iconWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-tertiary);
+  transition: color var(--transition-base);
+}
+
+.iconWrapper.active {
+  color: var(--accent-primary);
+}
+
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  transition: transform var(--transition-base);
+  opacity: 0.3;
+}

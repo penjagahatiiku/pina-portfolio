@@ -1,0 +1,59 @@
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-display);
+}
+
+.logoAccent {
+  font-size: 1.2rem;
+  font-weight: 900;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoSub {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.copy {
+  font-size: 0.85rem;
+  color: var(--text-tertiary) !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heart {
+  color: var(--error);
+  fill: var(--error);
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

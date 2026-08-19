@@ -1,0 +1,20 @@
+.wrapper { position: fixed; right: 24px; bottom: 24px; z-index: var(--z-modal); display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.panel { width: min(360px, calc(100vw - 32px)); height: 470px; display: flex; flex-direction: column; overflow: hidden; background: rgba(7, 54, 66, .96); border: 1px solid var(--border-hover); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl), var(--accent-glow); backdrop-filter: blur(20px); animation: chatIn .24s ease-out; }
+.header { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); }
+.title { display: flex; align-items: center; gap: 8px; color: var(--accent-secondary); font-size: .82rem; font-weight: 700; }
+.close { display: inline-flex; padding: 5px; border: 0; background: transparent; color: var(--text-secondary); cursor: pointer; }
+.messages { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 16px; overflow-y: auto; }
+.message { max-width: 84%; padding: 10px 12px; border-radius: 12px; color: var(--text-primary); font-size: .78rem; line-height: 1.6; white-space: pre-wrap; }
+.assistant { align-self: flex-start; background: rgba(0, 43, 54, .85); border: 1px solid var(--border-color); }
+.user { align-self: flex-end; background: var(--accent-primary); color: #fff; }
+.form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--border-color); }
+.form input { min-width: 0; flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 10px; outline: none; background: rgba(0, 43, 54, .7); color: var(--text-primary); font: inherit; }
+.form input:focus { border-color: var(--accent-primary); box-shadow: 0 0 0 3px rgba(38, 139, 210, .18); }
+.form button, .floating { display: inline-flex; align-items: center; justify-content: center; border: 0; cursor: pointer; color: #fff; background: var(--accent-primary); box-shadow: var(--accent-glow); transition: transform var(--transition-fast), background var(--transition-fast); }
+.form button { width: 38px; border-radius: 10px; }
+.form button:disabled { opacity: .45; cursor: not-allowed; }
+.floating { width: 112px; height: 112px; border-radius: 50%; }
+.floating svg { width: 46px; height: 46px; }
+.form button:not(:disabled):hover, .floating:hover { background: var(--accent-secondary); transform: translateY(-4px); }
+@keyframes chatIn { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 600px) { .wrapper { right: 16px; bottom: 16px; } .panel { height: min(470px, calc(100vh - 110px)); } }
